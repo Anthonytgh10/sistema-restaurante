@@ -1,10 +1,10 @@
 from django.shortcuts import render
 from django.http import JsonResponse
-from .models import Empleado, Mesa
-from rest_framework import viewsets, status
+from .models import Empleado, Mesa, Categoria, Producto
+from rest_framework import viewsets, status, permissions, filters
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from .serializers import EmpleadoSerializer, MesaSerializer
+from .serializers import EmpleadoSerializer, MesaSerializer, CategoriaSerializer, ProductoSerializer
 
 
 def dashboard(request):
@@ -77,3 +77,16 @@ def api_liberar_mesa(request, mesa_id):
         return Response({'success': success, 'message': 'Mesa liberada' if success else 'Mesa ya estaba libre'})
     except Mesa.DoesNotExist:
         return Response({'success': False, 'message': 'Mesa no encontrada'}, status=status.HTTP_404_NOT_FOUND)
+
+class CategoriaViewSet(viewsets.ModelViewSet):
+    queryset = Categoria.objects.all()
+    serializer_class = CategoriaSerializer
+    permission_classes = [permissions.IsAuthenticated]  # ajustar según política
+
+class ProductoViewSet(viewsets.ModelViewSet):
+    queryset = Producto.objects.all()
+    serializer_class = ProductoSerializer
+    permission_classes = [permissions.IsAuthenticated]  # puedes usar IsAdminUser para crear/editar
+    filter_backends = [filters.SearchFilter, filters.OrderingFilter]
+    search_fields = ['nombre', 'descripcion']
+    ordering_fields = ['precio', 'stock', 'nombre']

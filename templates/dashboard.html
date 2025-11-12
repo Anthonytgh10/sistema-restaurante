@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">📊 Dashboard del Restaurante</h1>
+</div>
+
+<!-- Métricas -->
+<div class="row">
+    <div class="col-md-3 mb-4">
+        <div class="card metric-card bg-primary text-white">
+            <div class="card-body text-center">
+                <h4>👥</h4>
+                <h3>{{ total_empleados }}</h3>
+                <p class="mb-0">Total Empleados</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 mb-4">
+        <div class="card metric-card bg-success text-white">
+            <div class="card-body text-center">
+                <h4>✅</h4>
+                <h3>{{ empleados_activos }}</h3>
+                <p class="mb-0">Empleados Activos</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 mb-4">
+        <div class="card metric-card bg-info text-white">
+            <div class="card-body text-center">
+                <h4>🍽️</h4>
+                <h3>{{ total_mesas }}</h3>
+                <p class="mb-0">Total Mesas</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 mb-4">
+        <div class="card metric-card bg-warning text-white">
+            <div class="card-body text-center">
+                <h4>🪑</h4>
+                <h3>{{ mesas_ocupadas }}</h3>
+                <p class="mb-0">Mesas Ocupadas</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Información del sistema -->
+<div class="row mt-5">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <h5>🚀 Sistema Listo</h5>
+            </div>
+            <div class="card-body">
+                <p>¡El backend está funcionando correctamente!</p>
+                <ul>
+                    <li>✅ Servidor Django ejecutándose</li>
+                    <li>✅ Base de datos configurada</li>
+                    <li>✅ Modelos creados</li>
+                    <li>✅ Panel de administración listo</li>
+                </ul>
+                <a href="/admin/" class="btn btn-primary">Ir al Panel de Administración</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <h5>📝 Próximos Pasos</h5>
+            </div>
+            <div class="card-body">
+                <ol>
+                    <li>Agregar empleados y mesas en el admin</li>
+                    <li>Crear APIs REST</li>
+                    <li>Desarrollar frontend completo</li>
+                    <li>Integrar con Colab</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

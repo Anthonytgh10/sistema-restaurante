@@ -1,0 +1,36 @@
+﻿Project,Summary,Description,Issue Type,Priority
+SR,Implementar login con usuario/correo + contraseña,"Permitir iniciar sesión con usuario o correo, validando credenciales en base de datos.",Historia de Usuario,High
+SR,Configurar contraseñas seguras,"Validar longitud ≥10, mayúsculas, minúsculas, número y símbolo. Agregar barra visual de seguridad.",Historia de Usuario,High
+SR,Cifrado seguro de contraseñas,Configurar Argon2PasswordHasher en settings.py.,Técnica,High
+SR,Bloquear cuenta tras 5 intentos fallidos,"Registrar intentos, bloquear por 15 minutos, usar django-axes o middleware propio.",Historia de Usuario,High
+SR,Recuperación de contraseña por correo con token temporal,Enviar enlace con token de 15 min para restablecer contraseña.,Historia de Usuario,High
+SR,Cerrar sesión por inactividad,Implementar cierre automático y mostrar alerta al usuario tras 15 minutos.,Historia de Usuario,Medium
+SR,Registrar auditoría de accesos,"Crear modelo AuditLog y registrar inicio, cierre y errores de login.",Técnica,High
+SR,Mensajes genéricos de error de login,Mostrar mensaje 'Credenciales inválidas' sin detallar campo.,Historia de Usuario,Medium
+SR,"Crear usuarios con nombre, correo y rol",Validar duplicados y enviar credenciales por email.,Historia de Usuario,High
+SR,Registrar datos personales,"Añadir campos cédula, teléfono, cargo y proteger datos.",Historia de Usuario,Medium
+SR,Editar datos básicos y roles,Permitir modificar información y registrar historial de cambios.,Historia de Usuario,High
+SR,Desactivar/reactivar usuarios,Usar campo is_active y conservar trazabilidad.,Historia de Usuario,High
+SR,Asignar menús o funcionalidades por rol,Controlar visibilidad de opciones según permisos.,Historia de Usuario,High
+SR,Asignar/quitar roles dinámicamente,Permitir modificar roles desde panel admin con auditoría.,Historia de Usuario,Medium
+SR,Búsqueda y filtros por rol o estado,Usar django-filter para buscar usuarios activos/inactivos.,Historia de Usuario,Medium
+SR,Exportar listado de usuarios,Generar exportación a CSV o Excel con django-import-export.,Técnica,Medium
+SR,Auditoría de cambios,"Registrar creación, edición, roles y estados en bitácora.",Técnica,High
+SR,Evitar eliminación de usuarios,Deshabilitar eliminación definitiva y usar desactivación.,Historia de Usuario,High
+SR,"Crear pedido con cliente, fecha e ítems","Registrar cada pedido con ítems, cantidades y precios.",Historia de Usuario,High
+SR,"Calcular subtotal, impuestos y descuentos",Cálculo automático en tiempo real.,Historia de Usuario,High
+SR,Gestionar estados del pedido,Definir ciclo: Borrador → Confirmado → Pagado → Entregado → Cancelado.,Historia de Usuario,High
+SR,Validar stock antes de confirmar,Evitar confirmar pedidos con inventario insuficiente.,Historia de Usuario,High
+SR,Registrar pagos y generar comprobantes,"Asociar pagos a pedidos, permitir pagos parciales y generar PDF.",Historia de Usuario,High
+SR,Cancelar pedido y revertir stock,"Registrar motivo, revertir inventario y emitir nota de crédito.",Historia de Usuario,Medium
+SR,"Reportes por fecha, cliente o vendedor",Generar reportes y exportar a PDF o Excel.,Historia de Usuario,Medium
+SR,Registrar auditoría de operaciones,Guardar en bitácora todas las acciones de pedidos.,Técnica,High
+SR,Crear tabla de auditoría general,"Registrar usuario, acción, fecha, IP y descripción.",Técnica,High
+SR,Registrar eventos automáticamente,"Conectarse a señales Django (save, delete, login/logout).",Técnica,High
+SR,Panel de visualización de auditoría,Mostrar registros filtrables para admin.,Historia de Usuario,Medium
+SR,Bloquear eliminación de logs,Los registros de auditoría deben ser inmutables.,Técnica,High
+SR,Configurar envío de correos (SMTP),Configurar backend de correo para notificaciones y recuperación.,Técnica,High
+SR,Variables de entorno (.env),Mover SECRET_KEY y credenciales a archivo .env.,Técnica,High
+SR,Migrar base de datos a PostgreSQL,Mejor rendimiento y estabilidad en producción.,Técnica,Medium
+SR,Mejorar interfaz de login/usuarios,Diseño con Bootstrap y validaciones visuales.,Historia de Usuario,Medium
+SR,Agregar tests unitarios básicos,"Validar modelos, vistas y APIs con pytest o unittest.",Técnica,Medium

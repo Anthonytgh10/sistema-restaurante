@@ -1,0 +1,27 @@
+<!doctype html><html lang="es"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Iniciar sesión · sistema-restaurante-main</title><link rel="stylesheet" href="styles.css"></head>
+<body><div class="container">
+<h1>Iniciar sesión</h1>
+<div class="nav"><a href="index.html">Inicio</a><a class="active" href="login.html">Iniciar sesión</a><a href="usuarios.html">Usuarios</a></div>
+<div class="card">
+  <div class="grid">
+    <div><label>Usuario o correo</label><input id="u" class="input" placeholder="usuario o correo"></div>
+    <div><label>Contraseña</label><input id="p" class="input" type="password" placeholder="••••••••••"></div>
+  </div>
+  <div style="margin-top:10px"><button class="btn" onclick="login()">Entrar</button> <a class="btn ghost" href="reset.html">Olvidé mi contraseña</a></div>
+</div>
+</div>
+<script>
+const API_BASE = localStorage.getItem('api_base') || 'http://127.0.0.1:8000/api';
+async function login(){
+  const username=document.getElementById('u').value.trim(); const password=document.getElementById('p').value;
+  if(!username||!password){ alert('Completa usuario y contraseña'); return; }
+  const res = await fetch(API_BASE + '/auth/login/', {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({username, password})});
+  const data = await res.json();
+  if(!res.ok){ alert((data && (data.error||data.detail)) || 'Credenciales inválidas'); return; }
+  localStorage.setItem('access', data.access||''); localStorage.setItem('refresh', data.refresh||''); localStorage.setItem('rol', data.rol||'');
+  alert('Bienvenido'); location.href='usuarios.html';
+}
+</script>
+</body></html>

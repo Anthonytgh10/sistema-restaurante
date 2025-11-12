@@ -1,7 +1,8 @@
 # 🏪 Sistema de Gestión para Restaurante
 
 ## 👥 Desarrollado por:
-- **Anthony** - Backend Developer
+- **Anthony** - Scrum Master
+- **Jessica** - Backend Developer
 - **Harold** - Frontend Developer
 
 ## 🚀 Características
@@ -12,7 +13,7 @@
 
 ## 🛠️ Tecnologías
 - Backend: Django 5.2
-- Frontend: HTML, CSS, JavaScript, Bootstrap
+- Frontend: Reac
 - Base de datos: SQLite
 
 ## 📦 Instalación

@@ -1,4 +1,4 @@
-const API_URL = "http://localhost:8000/api";
+const API_URL = "http://127.0.0.1:8000/api";
 
 async function request(method, route, body = null) {
   const options = { method };
@@ -21,10 +21,13 @@ export const api = {
 
 // LOGIN
 export async function login(username, password) {
+  console.log("Enviando petición al backend...");
   try {
     const response = await fetch(`${API_URL}/login/`, {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: { "Content-Type": "application/json",
+        "Accept": "application/json",
+       },
       body: JSON.stringify({ username, password }),
     });
 
@@ -32,11 +35,12 @@ export async function login(username, password) {
     const data = await response.json();
 
     // Verificamos si recibimos los tokens
-    if (response.ok && data.access && data.refresh) {
-      return data;
-    } else {
-      throw new Error(data.detail || "Usuario o contraseña incorrectos");
-    }
+   if (response.ok && data.access && data.refresh) {
+  return data;
+}
+
+throw new Error(data.error || "Usuario o contraseña incorrectos");
+
   } catch (err) {
     throw new Error(err.message || "Error al conectarse al servidor");
   }

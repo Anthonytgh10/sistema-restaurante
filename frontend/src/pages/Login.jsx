@@ -1,8 +1,7 @@
 import { useState } from "react";
-import  api  from "../services/api";
 import { useNavigate } from "react-router-dom";
 import "./Login.css";
-import { login } from "../services/api";
+import { login }  from "../services/api";
 
 
 export default function Login() {
@@ -12,21 +11,26 @@ export default function Login() {
   const navigate = useNavigate();
 
   async function handleSubmit(e) {
-    e.preventDefault();
-    setError("");
+  e.preventDefault();
+  setError("");
 
-    try {
-      const data = await login(username, password);
+  console.log("Enviando datos:", username, password);
 
-      // Guardar tokens
-      localStorage.setItem("access", data.access);
-      localStorage.setItem("refresh", data.refresh);
+  try {
+    const data = await login(username, password);
 
-      navigate("/dashboard");
-    } catch (err) {
-      setError("Usuario o contraseña incorrectos");
-    }
+    console.log("Respuesta backend:", data);
+
+    localStorage.setItem("access", data.access);
+    localStorage.setItem("refresh", data.refresh);
+
+    navigate("/dashboard");
+     console.log("Intentando iniciar sesión...");
+  } catch (err) {
+    console.error("ERROR:", err);
+    setError("Usuario o contraseña incorrectos");
   }
+}
 
   return (
     <div style={styles.container}>

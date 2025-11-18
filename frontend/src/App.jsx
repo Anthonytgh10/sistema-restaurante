@@ -7,7 +7,10 @@ function App() {
   return (
     <Routes>
       <Route path="/login" element={<Login />} />
-
+      <Route path="/dashboard" element={<Dashboard />} />
+      <Route path="/productos" element={<Productos />} />
+      <Route path="/pedidos" element={<Pedidos />} />
+      <Route path="/categorias" element={<Categorias />} />
       <Route
         path="/dashboard"
         element={

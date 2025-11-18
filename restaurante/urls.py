@@ -8,6 +8,8 @@ router.register(r'productos', views.ProductoViewSet)
 router.register(r'categorias', views.CategoriaViewSet)
 
 urlpatterns = [
+    path('api/login/', views.api_login, name='api_login'),
+
     path('api/', include(router.urls)),
     
     # ✅ SOLO esta vista existe - las demás están comentadas

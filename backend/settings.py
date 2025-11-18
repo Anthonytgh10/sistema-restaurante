@@ -64,6 +64,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'restaurante',
     'usuarios',
+    'corsheaders',
     'rest_framework_simplejwt.token_blacklist',
 ]
 
@@ -74,7 +75,8 @@ MIDDLEWARE = [
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+
 ]
 
 ROOT_URLCONF = 'backend.urls'
